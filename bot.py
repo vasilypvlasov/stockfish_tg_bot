@@ -20,10 +20,11 @@ def help(update, context):
 
 def handle_FEN(update, context):
     # TODO: Somehow valid FEN-string
-    st_engine.setfenposition(update.message.text)
+    fen = update.message.text
+    st_engine.setfenposition(fen)
     move_info = st_engine.bestmove()
     # TODO: Add more user-friendly message formating
-    update.message.reply_text(f"Best move: {move_info['move']}\nPonder: {move_info['ponder']}\nAdditional info: {move_info['info']}")
+    update.message.reply_text(f"According to FEN you sent: {fen}\n fen-to-image.com/image/{fen}\n Best move: {move_info['move']}\nPonder: {move_info['ponder']}\nAdditional info: {move_info['info']}")
 
 
 def main():
